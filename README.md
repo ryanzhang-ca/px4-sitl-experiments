@@ -14,6 +14,9 @@ I'm building a physical quadcopter (F450 frame, Pixhawk 6C, Raspberry Pi compani
 | Ground control | QGroundControl 4.4.3 (Linux AppImage, running in WSL) |
 | Scripting | Python 3.10, pymavlink |
 
+![PX4 SITL mission flight in QGroundControl and Gazebo](images/sim_flight.png)
+*A waypoint mission in progress: QGroundControl (left) shows the planned route and the path flown so far; Gazebo (right) shows the simulated quadcopter in flight.*
+
 ```bash
 # Build and launch the simulator
 cd ~/PX4-Autopilot
@@ -52,7 +55,6 @@ INFO  [commander] Disarmed by landing
 
 **Takeaway:** PX4 handles link loss in stages: detect, give the operator a short grace period, then run the configured action. The vehicle still had a valid position estimate, so it could fly home.
 
-<!-- Add screenshot: ![Test A](images/test_a.png) -->
 
 ### Test B: GPS failure in flight
 
@@ -75,7 +77,6 @@ INFO  [commander] Disarmed by landing
 
 **Takeaway:** Without GPS, PX4 has no horizontal position estimate, so it can't hold position or return home. Its only safe option is to descend in place. Once committed to the landing failsafe, it finished landing even after GPS came back.
 
-<!-- Add screenshot: ![Test B](images/test_b.png) -->
 
 ### Comparison
 
@@ -129,7 +130,6 @@ Landing...
 
 Altitude now tracks the vehicle in real time: a smooth climb toward 2.5 m, then a smooth descent to the ground.
 
-<!-- Add screenshot: ![Script output](images/script_output.png) -->
 
 ## Next steps
 
